@@ -1,8 +1,24 @@
-# Data Science Project Boilerplate
+# SISTEMA DE DETECCION DE ENLACES SPAM  
 
-This boilerplate is designed to kickstart data science projects by providing a basic setup for database connections, data processing, and machine learning model development. It includes a structured folder organization for your datasets and a set of pre-defined Python packages necessary for most data science tasks.
+Queremos implementar un sistema que sea capaz de detectar automáticamente si una página web contiene spam o no basándonos en su URL.
 
-## Structure
+Paso 1: Carga del conjunto de datos
+
+Paso 2: Preprocesamiento de enlaces
+Transformamos los datos para compatibilizarlos con el modelo que queremos entrenar. 
+Segmentamos las URLs en partes según sus signos de puntuación, eliminamos las stopwords, lematiza, etcétera.
+
+Paso 3: Construimos un SVM
+Implementamos un SVM con los parámetros por defecto. 
+Lo entrenamos y analizamos sus resultados.
+
+Paso 4: Optimizamos el modelo anterior
+Después de entrenar el SVM, optimizamos sus hiperparámetros utilizando un grid search o un random search.
+
+Paso 5: Guardamos el modelo
+
+
+# ESTRUCTURA
 
 The project is organized as follows:
 
@@ -33,22 +49,6 @@ Navigate to the project directory and install the required Python packages:
 pip install -r requirements.txt
 ```
 
-**Create a database (if needed)**
-
-Create a new database within the Postgres engine by customizing and executing the following command: `$ createdb -h localhost -U <username> <db_name>`
-Connect to the Postgres engine to use your database, manipulate tables and data: `$ psql -h localhost -U <username> <db_name>`
-NOTE: Remember to check the ./.env file information to get the username and db_name.
-
-Once you are inside PSQL you will be able to create tables, make queries, insert, update or delete data and much more!
-
-**Environment Variables**
-
-Create a .env file in the project root directory to store your environment variables, such as your database connection string:
-
-```makefile
-DATABASE_URL="your_database_connection_url_here"
-```
-
 ## Running the Application
 
 To run the application, execute the app.py script from the root of the project directory:
@@ -56,31 +56,6 @@ To run the application, execute the app.py script from the root of the project d
 ```bash
 python app.py
 ```
-
-## Adding Models
-
-To add SQLAlchemy model classes, create new Python script files inside the models/ directory. These classes should be defined according to your database schema.
-
-Example model definition (`models/example_model.py`):
-
-```py
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
-
-Base = declarative_base()
-
-class ExampleModel(Base):
-    __tablename__ = 'example_table'
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-
-```
-
-## Working with Data
-
-You can place your raw datasets in the data/raw directory, intermediate datasets in data/interim, and the processed datasets ready for analysis in data/processed.
-
-To process data, you can modify the app.py script to include your data processing steps, utilizing pandas for data manipulation and analysis.
 
 ## Contributors
 
